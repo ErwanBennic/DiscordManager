@@ -1,5 +1,5 @@
 # DiscordManager
-Discord Manager Bot | 31 Avril
+Discord Manager Bot | April 31 | May 31
 
 This project uses Python 3.7.7
 - https://www.python.org/ftp/python/3.7.7/python-3.7.7-amd64.exe
