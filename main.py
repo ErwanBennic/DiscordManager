@@ -2,6 +2,7 @@ import discord
 import time
 nbMessage = 0
 start_time = time.time()
+words=["list", "of", "words"]
 
 class MyClient(discord.Client):
     async def on_ready(self):
@@ -24,6 +25,10 @@ class MyClient(discord.Client):
         if message.content.startswith('!hello'):
             await message.channel.send('Hello {0.author.mention}'.format(message))
 
-client = MyClient()
+    async def on_message(self, message):
+        if any(word in message.content.lower() for word in words):
+            await message.delete()
+            await message.channel.send(':warning: Attention {0.author.mention}, '.format(message) + ' votre message a été **supprimé** : merci d\'utiliser **un langage correct !**')
 
+client = MyClient()
 client.run('NTU0NzI4Mjc2OTY3NTU1MDc3.XqFVfQ.xT8jEl9Tuedw-AQJIg5Fvc01Uv0')
