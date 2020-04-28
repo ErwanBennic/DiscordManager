@@ -1,6 +1,7 @@
 import discord
-
+import time
 nbMessage = 0
+start_time = time.time()
 
 class MyClient(discord.Client):
     async def on_ready(self):
@@ -13,7 +14,12 @@ class MyClient(discord.Client):
             return
 
         nbMessage += 1
-        await message.channel.send(nbMessage)
+        elapsed_time = time.time() - start_time
+
+        print(elapsed_time)
+
+        if nbMessage > 5 and elapsed_time < 5:
+            await message.channel.send('Attention {0.author.mention}'.format(message) + ', vous êtes en train de spammer. Nombre de messages envoyés : ' + str(nbMessage))
 
         if message.content.startswith('!hello'):
             await message.channel.send('Hello {0.author.mention}'.format(message))
