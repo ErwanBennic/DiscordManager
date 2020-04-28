@@ -37,5 +37,7 @@ class MyClient(discord.Client):
             await message.delete()
             await message.channel.send(':warning: Attention {0.author.mention}, '.format(message) + ' votre message a été **supprimé** : merci d\'utiliser **un langage correct !**')
 
+        # Faire une commande pour set le temps de timeout du spam
+        
 client = MyClient()
 client.run('NTU0NzI4Mjc2OTY3NTU1MDc3.XqgORQ.4T8JXoVYzL4dMeuUH0FDajdNgPA')
