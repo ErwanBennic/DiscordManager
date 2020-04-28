@@ -31,4 +31,4 @@ class MyClient(discord.Client):
             await message.channel.send(':warning: Attention {0.author.mention}, '.format(message) + ' votre message a été **supprimé** : merci d\'utiliser **un langage correct !**')
 
 client = MyClient()
-client.run('NTU0NzI4Mjc2OTY3NTU1MDc3.XqFVfQ.xT8jEl9Tuedw-AQJIg5Fvc01Uv0')
+client.run('NTU0NzI4Mjc2OTY3NTU1MDc3.Xqf-CA.72NZa_jlEV0mkFpCMgV9M-jFITQ')
