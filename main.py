@@ -1,29 +1,23 @@
 import discord
 
-client = discord.Client()
-message_counter = 0
+nbMessage = 0
 
-@client.event
-async def on_ready():
-    print('We have logged in as {0.user}'.format(client))
+class MyClient(discord.Client):
+    async def on_ready(self):
+        print('Logged on as {0}!'.format(self.user))
 
+    async def on_message(self, message):
+        # we do not want the bot to reply to itself
+        global nbMessage
+        if message.author.id == self.user.id:
+            return
 
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
+        nbMessage += 1
+        await message.channel.send(nbMessage)
 
-    if message.content.startswith('!hello'):
-        await message.channel.send('Hello!')
+        if message.content.startswith('!hello'):
+            await message.channel.send('Hello {0.author.mention}'.format(message))
 
-    if message.content.startswith('!help'):
-        await message.channel.send('Liste des commandes disponibles : !hello')
-
-
-@client.event
-async def on_message(message):
-    global message_counter
-    message_counter += 1
-    await message.channel.send('Nombre de messages envoyés : '+ str(message_counter))
+client = MyClient()
 
 client.run('NTU0NzI4Mjc2OTY3NTU1MDc3.XqFVfQ.xT8jEl9Tuedw-AQJIg5Fvc01Uv0')
