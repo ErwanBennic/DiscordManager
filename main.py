@@ -21,21 +21,21 @@ class MyClient(discord.Client):
         print(elapsed_time)
 
         if nbMessage > 5 and elapsed_time < 5:
-            await message.channel.send('Attention {0.author.mention}'.format(message) + ', vous êtes en train de spammer. Nombre de messages envoyés : ' + str(nbMessage))
+            await message.channel.send('Attention {0.author.mention}'.format(message) + ', tu es en train de spammer. Nombre de messages envoyés : ' + str(nbMessage))
 
         if message.content.startswith('!hello'):
             await message.channel.send('Hello {0.author.mention}'.format(message))
 
         if message.content.startswith('!uptime'):
-            await message.channel.send('Le bot est en ligne depuis :' + str(elapsed_time) + ' secondes.')
+            await message.channel.send('Le bot est en ligne depuis : ' + str(int(elapsed_time)) + ' secondes.')
 
         if message.content.startswith('!disconnect'):
+            await message.channel.send('Le bot va s\'éteindre, veuillez patienter...')
             await client.close()
 
-    async def on_message(self, message):
         if any(word in message.content.lower() for word in words):
             await message.delete()
             await message.channel.send(':warning: Attention {0.author.mention}, '.format(message) + ' votre message a été **supprimé** : merci d\'utiliser **un langage correct !**')
 
 client = MyClient()
-client.run('NTU0NzI4Mjc2OTY3NTU1MDc3.XqgFYw.O-67bvPEsHsgV0eO3ZIquD-r6_c')
+client.run('NTU0NzI4Mjc2OTY3NTU1MDc3.XqgORQ.4T8JXoVYzL4dMeuUH0FDajdNgPA')
