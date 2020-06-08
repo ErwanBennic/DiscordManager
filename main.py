@@ -9,6 +9,7 @@ words = text_file.read().split()
 class MyClient(discord.Client):
     async def on_ready(self):
         print('Logged on as {0}!'.format(self.user))
+        await client.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="!help"))
 
     async def on_message(self, message):
         # we do not want the bot to reply to itself
