@@ -42,7 +42,7 @@ class MyClient(discord.Client):
             embed.add_field(name="Hello World", value="!hello", inline=False)
             embed.add_field(name="Donne l'uptime du bot", value="!uptime", inline=False)
             embed.add_field(name="Déconnecte le bot", value="!disconnect", inline=False)
-            embed.add_field(name="Ajoute un rôle à un utilisateur", value="!addrole {personne} {rôle}", inline=False)
+            embed.add_field(name="WIP | Ajoute un rôle à un utilisateur", value="!addrole {personne} {rôle}", inline=False)
             embed.set_footer(text="Requested by " + message.author.name, icon_url=message.author.avatar_url)
 
             await message.channel.send(embed=embed)
