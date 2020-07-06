@@ -19,11 +19,14 @@ class MyClient(discord.Client):
 
         nbMessage += 1
         elapsed_time = time.time() - start_time
+        elapsed_time_to = time.time() - start_time
 
         print("Le bot est en ligne depuis %.0f" % elapsed_time + " secondes.")
 
-        if nbMessage > 5 and elapsed_time < 5:
+        if nbMessage > 5 and elapsed_time_to < 5:
             await message.channel.send('Attention {0.author.mention}'.format(message) + ', tu es en train de spammer. Nombre de messages envoyés : ' + str(nbMessage))
+        else:
+            elapsed_time_to = 0
 
         if message.content.startswith('!hello'):
             await message.channel.send('Hello {0.author.mention}'.format(message))
@@ -42,7 +45,10 @@ class MyClient(discord.Client):
             embed.add_field(name="Hello World", value="!hello", inline=False)
             embed.add_field(name="Donne l'uptime du bot", value="!uptime", inline=False)
             embed.add_field(name="Déconnecte le bot", value="!disconnect", inline=False)
-            embed.add_field(name="WIP | Ajoute un rôle à un utilisateur", value="!addrole {personne} {rôle}", inline=False)
+            embed.add_field(name="__**En développement**__ | Rêgle le temps de timeout de l'anti-spam", value="!settimeout {valeur}", inline=False)
+            embed.add_field(name="__**En développement**__ | Ajoute un rôle à un utilisateur", value="!addrole {personne} {rôle}", inline=False)
+            embed.add_field(name="Fonctionnalité anti-spam", value="Activée :white_check_mark:", inline=False)
+            embed.add_field(name="Fonctionnalité filtre à obscénité", value="Activée :white_check_mark:", inline=False)
             embed.set_footer(text="Requested by " + message.author.name, icon_url=message.author.avatar_url)
 
             await message.channel.send(embed=embed)
@@ -52,7 +58,6 @@ class MyClient(discord.Client):
                 await message.delete()
                 await message.channel.send(':warning: Attention {0.author.mention}, '.format(message) + ' votre message a été **supprimé** : merci d\'utiliser **un langage correct !**')
 
-        # Faire une commande pour set le temps de timeout du spam
 
 client = MyClient()
-client.run('NTU0NzI4Mjc2OTY3NTU1MDc3.XqgORQ.4T8JXoVYzL4dMeuUH0FDajdNgPA')
+client.run('#Coller votre clé API ici.')
